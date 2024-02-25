@@ -7,6 +7,7 @@ import * as ExpoImage from "expo-image";
 import {Text, View} from "@/components/Themed";
 import {useCallback} from "react";
 import {Feather} from "@expo/vector-icons";
+import SocialButton from "@/components/SocialButton";
 
 type CatCarouselItem = {
   id: string;
@@ -87,30 +88,8 @@ export default function ModalScreen() {
       />
 
       <Text style={styles.title}>Checkout my : </Text>
-      <Pressable
-        style={({pressed}) => ({
-          flexDirection: "row",
-          justifyContent: "center",
-          gap: 4,
-          alignItems: "flex-end",
-          marginVertical: 8,
-          borderWidth: 2,
-          borderColor:
-            useColorScheme() === "dark"
-              ? "rgba(255, 255, 255, 0.5)"
-              : "rba(0, 0, 0, 0.5)",
-          padding: 8,
-          borderRadius: 8,
-          backgroundColor: pressed ? "rgba(191, 191, 191, 0.5)" : "transparent",
-        })}
-      >
-        <Feather
-          name="linkedin"
-          size={24}
-          color={useColorScheme() === "dark" ? "white" : "black"}
-        />
-        <Text style={{fontSize: 16, fontWeight: "700"}}> Linked In </Text>
-      </Pressable>
+
+      <SocialButton icon="linkedin" social="linkedin" />
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />

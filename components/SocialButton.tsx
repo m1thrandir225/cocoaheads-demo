@@ -2,7 +2,7 @@ import {Pressable, StyleSheet, useColorScheme} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import {useCallback, useMemo} from "react";
 import {Text} from "./Themed";
-import * as Browser from "expo-web-browser";
+import * as WebBrowser from "expo-web-browser";
 
 type SocialButtonProps = {
   social: "linkedin" | "github";
@@ -41,9 +41,12 @@ const SocialButton: React.FC<SocialButtonProps> = (props) => {
     }
   }, [social]);
 
-  const handlePress = useCallback(() => {
-    Browser.openBrowserAsync(socialUrl);
-  }, []);
+  const handlePress = async () => {
+    console.log("Opening", socialUrl);
+    if (socialUrl) {
+      const result = await WebBrowser.openBrowserAsync(socialUrl);
+    }
+  };
   return (
     <Pressable
       onPress={handlePress}
